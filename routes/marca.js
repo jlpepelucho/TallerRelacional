@@ -9,19 +9,25 @@ app.get('/', function(req, res) {
 
 app.get('/app/marca/:id', function(req, res) {
     let id = req.params.id
+    Marca.findOne({
+            where: {
+                codigo: id
+            }
 
+        })
+        .then(busca => {
+            res.json(busca)
+        })
 })
 
 app.get('/app/marca', function(req, res) {
     const body = req.body;
 
+    Marca.findAll({
 
-    Marca.create({
-            CODIGO: body.codigo,
-            NOMBRE: body.nombre
         })
-        .then(() => {
-            console.log(created)
+        .then(busca => {
+            res.json(busca)
         })
 
 })

@@ -11,16 +11,25 @@ Vehiculo.init({
         primaryKey: true
     },
     CODIGO: {
-        type: Sequelize.STRING
-            // allowNull defaults to true
+        type: Sequelize.STRING,
+        references: {
+            model: 'marca',
+            key: 'CODIGOMARCA'
+        }
     },
     PROPIETARIO: {
-        type: Sequelize.STRING
-            // allowNull defaults to true
+        type: Sequelize.STRING,
+        references: {
+            model: 'propietario',
+            key: 'cedula'
+        }
     },
     CODIGOMODELO: {
-        type: Sequelize.STRING
-            // allowNull defaults to true
+        type: Sequelize.STRING,
+        references: {
+            model: 'modelo',
+            key: 'CODIGOMODELO'
+        }
     },
     ANIO: {
         type: Sequelize.NUMBER

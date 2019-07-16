@@ -1,7 +1,13 @@
+const Sequelize = require('sequelize');
+
 const express = require('express');
 const { Vehiculo } = require('../model/Vehiculo')
 const { Propietario } = require('../model/propietario')
+
+Vehiculo.belongsTo(Propietario, {foreignKey: 'PROPIETARIO'});
+const { Modelo } = require('../model/modelo')
 const app = express();
+const Op= Sequelize.Op;
 app.get('/', function(req, res) {
     res.json('arriba')
 
@@ -96,9 +102,6 @@ app.get('/app/vehiculo/propietarios/:id', function(req, res) {
                 model: Propietario,
                 where: { FECHANACIMIENTO: {
                         [Op.lt]: date.toISOString() } }
-            },
-            {
-                model: Modelo
             }
         ]
     }).then(vehiculo => {

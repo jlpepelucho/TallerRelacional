@@ -14,7 +14,7 @@ Vehiculo.init({
         type: Sequelize.STRING
             // allowNull defaults to true
     },
-    CEDULA: {
+    PROPIETARIO: {
         type: Sequelize.STRING
             // allowNull defaults to true
     },

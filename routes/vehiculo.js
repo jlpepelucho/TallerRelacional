@@ -71,8 +71,12 @@ app.get('/app/vehiculo', function (req, res) {
 
 app.put('/app/vehiculo/propietarios', function (req, res) {
     let body = req.body;
-    Vehiculo.update({})
-        .then(buscaVehiculo => {
+    
+    Vehiculo.update({ PROPIETARIO: req.body.PROPIETARIO.CEDULA}, {
+        where:{
+            PLACA: req.body.PLACA
+        }
+    }) .then(buscaVehiculo => {
             res.json(buscaVehiculo)
 
         })

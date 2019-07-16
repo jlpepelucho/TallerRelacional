@@ -77,8 +77,11 @@ app.put('/app/vehiculo/propietarios', function (req, res) {
             PLACA: req.body.PLACA
         }
     }) .then(buscaVehiculo => {
-            res.json(buscaVehiculo)
+           
+            res.json(buscaVehiculo);
 
+        }).catch(() => {
+            return res.status(404).json();
         })
 
 })
